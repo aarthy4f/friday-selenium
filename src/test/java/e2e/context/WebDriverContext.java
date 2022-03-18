@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * The Class is responsible in maintaining single instance of webdriver in any given thread.
  *
- * @author Bharathish
+ * @author aarthy
  */
 public class WebDriverContext {
 	
