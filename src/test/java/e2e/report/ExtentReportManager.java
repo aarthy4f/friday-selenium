@@ -12,7 +12,7 @@ import e2e.context.Constants;
 /**
  * The Class handles the report activities.
  *
- * @author Bharathish
+ * @author aarthy
  */
 public class ExtentReportManager {
 
