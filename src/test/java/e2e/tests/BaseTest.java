@@ -67,19 +67,18 @@ public class BaseTest {
 	protected void setup() {
 //		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
 		WebDriverManager.chromedriver().setup();
-		ChromeOptions ops = new ChromeOptions();
-		//ops.addArguments("--lang=en");
-
-		Map<String, Object> prefs = new HashMap<String, Object>();
-		Map<String, Object> langs = new HashMap<String, Object>();
-		langs.put("de", "en");
-		prefs.put("translate", "{'enabled' : true}");
-		prefs.put("translate_whitelists", langs);
-		ops.setExperimentalOption("prefs", prefs);
-		//ops.setExperimentalOption()'prefs', {'intl.accept_languages': 'en,en_US'})
-		//ops.addArguments("--lang= locale-of-choice");
-		//ops.addArguments("disable-infobars");
-		driver = new ChromeDriver(ops);
+		
+		ChromeOptions options = new ChromeOptions();
+			// options = new ChromeOptions();
+			options.addArguments("enable-automation");
+			options.addArguments("--headless");
+			options.addArguments("--window-size=1920,1080");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-extensions");
+			options.addArguments("--dns-prefetch-disable");
+			options.addArguments("--disable-gpu");
+			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+		driver = new ChromeDriver(options);
 		WebDriverContext.setDriver(driver);
 		driver.get("https://hello.friday.de/quote/selectPrecondition");
 		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(3));
