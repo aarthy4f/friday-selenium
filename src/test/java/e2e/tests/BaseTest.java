@@ -6,16 +6,11 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import e2e.util.ExcelUtil;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 
 import e2e.context.WebDriverContext;
 import e2e.listeners.LogListener;
@@ -28,7 +23,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 /**
  * Every test class should extend this calss.
  *
- * @author Bharathish
+ * @author Aarthy
  */
 @Listeners({ ReportListener.class, LogListener.class })
 public class BaseTest {
@@ -85,14 +80,22 @@ public class BaseTest {
 		//ops.addArguments("--lang= locale-of-choice");
 		//ops.addArguments("disable-infobars");
 		driver = new ChromeDriver(ops);
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.manage().deleteCookieNamed("Cookie name");
-
-		//driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(3));
 		WebDriverContext.setDriver(driver);
 		driver.get("https://hello.friday.de/quote/selectPrecondition");
+		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(3));
+		WebElement root1 = driver.findElement(By.id("usercentrics-root"));
+		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+		SearchContext shadowRoot1 = (SearchContext) javascriptExecutor.executeScript("return arguments[0].shadowRoot", root1);
+		shadowRoot1.findElement(By.cssSelector("button[data-testid=uc-accept-all-button]")).click();
+
+
+
 	}
+	 @BeforeMethod
+	 public void setcookies(){
+		 driver.get("https://hello.friday.de/quote/selectPrecondition");
+
+	 }
 	@DataProvider(name = "cardetails")
 
 	public static Object[][] cardetails() throws Exception{
