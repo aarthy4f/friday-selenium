@@ -1,6 +1,8 @@
 package e2e.businessspecific;
 import e2e.pages.VehicleSelectPage;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
@@ -21,37 +23,51 @@ public class vehicleselection {
 
     public void selectmodel(String car,String brand,String type){
         VehicleSelectPage vehicleSelectPage=new VehicleSelectPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name='list']")));
+        
         vehicleSelectPage.clickchoosemodel();
+
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='makeFilter']")));
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         vehicleSelectPage.entermodel(car);
-        WebElement elm=driver.findElement(By.xpath((returnxpath(car))));
-        elm.click();
-        //  String vehiclexpath="//label[text()='"+car+"']/parent::div";
-        //  String brandxpath="//label[text()='"+brand+"']/ancestor::button";
-        //String typexpath="//label[text()='"+type+"']/ancestor::button";
+        click(car);
+
         List<WebElement> listelm=driver.findElements(By.xpath(returnxpath(brand)));
         listelm.get(0).click();
 
-        WebElement root1 = driver.findElement(By.id("usercentrics-root"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(10));
 
-        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-        SearchContext shadowRoot1 = (SearchContext) javascriptExecutor.executeScript("return arguments[0].shadowRoot", root1);
-        shadowRoot1.findElement(By.cssSelector("button[data-testid=uc-accept-all-button]")).click();
 
-        elm=driver.findElement(By.xpath(returnxpath(type)));
-        elm.click();
+     if(!type.contains("null")){
+      click(type);
+     }
+
+
         String fuel="Diesel";
-        elm=driver.findElement(By.xpath(returnxpath(fuel)));
-        elm.click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10000));
+        click(fuel);
 
-         vehicleSelectPage.clickenginepower();
+
+        vehicleSelectPage.clickenginepower();
         vehicleSelectPage.clickengine();
 
 
 
     }
+    public void click(String value){
+        String xpathvalue="//label[text()='"+value+"']/parent::div";
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathvalue)));
+
+        WebElement elm=driver.findElement(By.xpath(xpathvalue));
+
+        elm.click();
+
+    }
     public String returnxpath(String value){
         String xpathvalue="//label[text()='"+value+"']/parent::div";
-        return xpathvalue;
+    return xpathvalue;
+
     }
 }
