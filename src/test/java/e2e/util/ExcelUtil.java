@@ -58,7 +58,7 @@ public class ExcelUtil {
 
                 cj = 0;
 
-                for (int j = startCol; j < totalCols; j++, cj++) {
+                for (int j = startCol; j <= totalCols; j++, cj++) {
 
                    tabArray[ci][cj] = getCellData(i, j);
 
