@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import java.time.Duration;
 
 /**
- * The Class represents FacebookLoginPage.
+ * The Class represents VehicleSelectionPage.
  *
  * @author Aarthy
  */
@@ -64,6 +64,7 @@ public class VehicleSelectPage {
     public void  clickenginepower() {
         enginepower.click();
     }
+
     public void  clickengine() {
         engine.click();
     }
@@ -77,7 +78,7 @@ public class VehicleSelectPage {
     }
 
     /**
-         * Instantiates a new Vehicle page.
+         * Instantiates a new Vehicleselectpage.
          *
          * @param driver the driver
          */
@@ -86,7 +87,7 @@ public class VehicleSelectPage {
             this.driver = driver;
             PageFactory.initElements(driver, this);
             waiter = new FluentWait<WebDriver>(driver).ignoring(NoSuchElementException.class, WebDriverException.class)
-                    .withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(2));
+                    .withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(30));
 
         }
 
@@ -96,6 +97,7 @@ public class VehicleSelectPage {
         }
 
        public void entermodel(String model) {
+           cardbrand.clear();
            cardbrand.sendKeys(model);
 
         }
