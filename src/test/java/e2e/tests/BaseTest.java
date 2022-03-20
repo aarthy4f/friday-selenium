@@ -1,14 +1,12 @@
 package e2e.tests;
 
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import e2e.util.ExcelUtil;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -21,7 +19,7 @@ import e2e.util.TestProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * Every test class should extend this calss.
+ * Every test class should extend this class.
  *
  * @author Aarthy
  */
@@ -63,12 +61,20 @@ public class BaseTest {
 	/**
 	 * Setup.
 	 */
+	@Parameters({"browser"})
 	@BeforeClass
-	protected void setup() {
+	protected void setup(String browser) throws Exception {
+ 	//String browser="chrome";
 //		System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
-		WebDriverManager.chromedriver().setup();
-		
-		ChromeOptions options = new ChromeOptions();
+		if(browser.equalsIgnoreCase("firefox")){
+			//create firefox instance
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+		}
+		//Check if parameter passed as 'chrome'
+		else if(browser.equalsIgnoreCase("chrome")){
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
 			// options = new ChromeOptions();
 			options.addArguments("enable-automation");
 			//options.addArguments("--headless");
@@ -78,10 +84,26 @@ public class BaseTest {
 			options.addArguments("--dns-prefetch-disable");
 			options.addArguments("--disable-gpu");
 			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		driver = new ChromeDriver(options);
+			//ops.addArguments("--lang=en");
+
+			driver = new ChromeDriver(options);
+
+
+		}
+		//Check if parameter passed as 'Edge'
+		else if(browser.equalsIgnoreCase("Edge")){
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+		}
+		else{
+			//If no browser passed throw exception
+			throw new Exception("Browser is not correct");
+		}
+
+
 		WebDriverContext.setDriver(driver);
 		driver.get("https://hello.friday.de/quote/selectPrecondition");
-		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(3));
+		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(4));
 		WebElement root1 = driver.findElement(By.id("usercentrics-root"));
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 		SearchContext shadowRoot1 = (SearchContext) javascriptExecutor.executeScript("return arguments[0].shadowRoot", root1);
@@ -91,7 +113,7 @@ public class BaseTest {
 
 	}
 	 @BeforeMethod
-	 public void setcookies(){
+	 public void launchapplication(){
 		 driver.get("https://hello.friday.de/quote/selectPrecondition");
 
 	 }
@@ -101,7 +123,6 @@ public class BaseTest {
 
 	 // The number of times data is repeated, test will be executed the same no. of times
 
-	 // Here it will execute two times
 	 Object[][] testObjArray = ExcelUtil.getTableArray();
 
 	 return (testObjArray);

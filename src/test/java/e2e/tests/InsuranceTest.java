@@ -1,8 +1,9 @@
 package e2e.tests;
 
 import com.relevantcodes.extentreports.ExtentTest;
+import e2e.businessspecific.precondition;
 import e2e.businessspecific.vehicleselection;
-import e2e.pages.insuranceLoginPage;
+import e2e.pages.InsuranceLoginPage;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,17 +24,13 @@ public class InsuranceTest extends BaseTest {
         System.out.println(model);
         System.out.println(type);
 
+        InsuranceLoginPage insuranceLoginPage=new InsuranceLoginPage(driver);
+        precondition precondition=new precondition(driver);
+        precondition.verifypreselection();
+        insuranceLoginPage.clicksubmit();
 
-
-
-        insuranceLoginPage insuranceLoginPage=new insuranceLoginPage(driver);
-
-
-       insuranceLoginPage.clicksubmit();
-
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit']")));
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit']")));
        insuranceLoginPage.clicksubmit();
        vehicleselection vehicle=new vehicleselection(driver);
        vehicle.selectmodel(car,model,type);
