@@ -3,9 +3,10 @@
 <suite name="Suite">
 	<listeners></listeners>
 	<test thread-count="1" name="Test" >
-		<classes>
 
+		<classes>
 			<class name="e2e.tests.InsuranceTest"></class>
+			<parameter name="browser" value="chrome" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
