@@ -15,7 +15,8 @@ The framework uses:
 5. Log4j
 
 Architecture Diagram:
-![image](https://user-images.githubusercontent.com/56670845/159147755-54c38802-6e67-4320-8a63-045e887582e1.png)
+![image](https://user-images.githubusercontent.com/56670845/159148023-b4d1970e-92db-47ec-8d87-818fcbb01746.png)
+
 
 
 
