@@ -37,7 +37,7 @@ public class vehicleselection {
         List<WebElement> listelm=driver.findElements(By.xpath(returnxpath(brand)));
         listelm.get(0).click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(4));
 
 
      if(!type.contains("null")){
@@ -59,7 +59,7 @@ public class vehicleselection {
         String xpathvalue="//label[text()='"+value+"']/parent::div";
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathvalue)));
- driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(5));
+
         WebElement elm=driver.findElement(By.xpath(xpathvalue));
 
         elm.click();
