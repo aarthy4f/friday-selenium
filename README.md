@@ -14,6 +14,9 @@ The framework uses:
 4. ExtentReport
 5. Log4j
 
+Architecture Diagram:
+![image](https://user-images.githubusercontent.com/56670845/159147755-54c38802-6e67-4320-8a63-045e887582e1.png)
+
 
 
 
