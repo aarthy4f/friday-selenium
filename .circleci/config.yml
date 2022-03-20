@@ -32,7 +32,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: mvn clean integration-test
+      - run: mvn clean integration-test -Dbrowser=chrome
 
       - run:
           name: Save test results
