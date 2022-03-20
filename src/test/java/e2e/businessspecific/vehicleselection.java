@@ -57,8 +57,8 @@ public class vehicleselection {
     }
     public void click(String value){
         String xpathvalue="//label[text()='"+value+"']/parent::div";
-    /*    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathvalue)));*/
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathvalue)));
  driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(5));
         WebElement elm=driver.findElement(By.xpath(xpathvalue));
 
