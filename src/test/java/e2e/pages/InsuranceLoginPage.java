@@ -1,4 +1,5 @@
 package e2e.pages;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -20,80 +21,95 @@ public class InsuranceLoginPage {
     protected FluentWait<WebDriver> waiter;
 
 
-        /** The buying new card insurance  */
+    /**
+     * The buying new card insurance
+     */
 
-        @FindBy(xpath = "//label[contains(@data-testid,'buyingCarquoting')]")
-        private WebElement newcarradio;
+    @FindBy(xpath = "//label[contains(@data-testid,'buyingCarquoting')]")
+    private WebElement newcarradio;
 
-        /** The Inceptiondate. */
-        @FindBy(name = "inceptionDate")
-        private WebElement inceptionDate;
+    @FindBy(xpath = "//label[contains(@data-testid,'keepingCar')]")
+    private WebElement existingarradio;
 
-        /** The submit button. */
-        @FindBy(xpath="//button[@type='submit']")
-        private WebElement continuebtn;
-        /**
-         * Instantiates a new Insurancelogin page.
-         *
-         * @param driver the driver
-         */
-        public InsuranceLoginPage(WebDriver driver) {
+    /**
+     * The Inceptiondate.
+     */
+    @FindBy(name = "inceptionDate")
+    private WebElement inceptionDate;
 
-            this.driver = driver;
-           PageFactory.initElements(driver, this);
-            waiter = new FluentWait<WebDriver>(driver).ignoring(NoSuchElementException.class, WebDriverException.class)
-                    .withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(2));
-        }
+    /**
+     * The submit button.
+     */
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement continuebtn;
+
+    /**
+     * Instantiates a new Insurancelogin page.
+     *
+     * @param driver the driver
+     */
+    public InsuranceLoginPage(WebDriver driver) {
+
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        waiter = new FluentWait<WebDriver>(driver).ignoring(NoSuchElementException.class, WebDriverException.class)
+                .withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(2));
+    }
+
     /**
      * Verify the new car insurance radio button selected
-     * */
+     */
 
-        public String  newcarradioInput() {
-            String attribute= newcarradio.getAttribute("data-checked");
-            if(attribute==null){
-                return "false";
+    public String newcarradioInput() {
+        String attribute = newcarradio.getAttribute("data-checked");
+        if (attribute == null) {
+            return "false";
 
-            }
-            return attribute;
         }
-        /**
-         * Select the new car insurance radio button
-         * */
+        return attribute;
+    }
 
-        public void newcarselectradio() {
-            newcarradio.click();
-        }
+    /**
+     * Select the issuerchange insurance radio button
+     */
+    public void existingcarselectradio() {
+        existingarradio.click();
+    }
+
+
+    /**
+     * Select the new car insurance radio button
+     */
+
+    public void newcarselectradio() {
+        newcarradio.click();
+    }
 
     /**
      * Verify the inceptiondate is entered*
-     * */
-        
-       public String getinceptionDate() {
-             String datevalue= inceptionDate.getAttribute("value");
-             return datevalue;
+     */
 
-        }
+    public String getinceptionDate() {
+        String datevalue = inceptionDate.getAttribute("value");
+        return datevalue;
+
+    }
+
     /**
      * set the inceptiondate *
-     * */
+     */
     public void setinceptionDate() {
         inceptionDate.sendKeys("22.03.2022");
 
     }
+
     /**
      * Click the submit
-     * */
+     */
 
     public void clicksubmit() {
-                continuebtn.click();
-        }
+        continuebtn.click();
+    }
 
-        /**
-         * Click sign in.
-         */
-      /*  public void clickSignIn() {
-            pass.submit();
-        }*/
-    //}
-//
+
 }
