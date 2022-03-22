@@ -14,6 +14,7 @@ The framework uses:
 6. circleCI Integration
 
 **Execution**
+---
 •	Clone the repository.
 •	Open command prompt and go to project directory.
 •	Run mvn clean install -Dbrowser=chrome
@@ -25,6 +26,7 @@ Edge	- Dbrowser=edge
 
 
 **Architecture Diagram:**
+---
 ![image](https://user-images.githubusercontent.com/56670845/159425660-b14028dc-a06f-4814-80b8-ff51e83398f0.png)
 
 
@@ -40,6 +42,7 @@ The framework gives report in two ways,
 2. A html report - Which is generated using extent reports, under the folder `ExtentReports`.
 
 **Screenshot**
+---
 ![image](https://user-images.githubusercontent.com/56670845/159425834-d9f68733-2c61-4497-82ae-7798f558138b.png)
 
 Execution steps
