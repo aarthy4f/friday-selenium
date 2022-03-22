@@ -32,7 +32,7 @@ public class InsuranceTest extends BaseTest {
 
     @Test(dataProvider = "cardetails", testName = "Purchase insurance for car")
     public void InsuranceTest(String insurancestatus, String car, String model, String type, String hsn) throws Exception {
-        ReportUtil.logMessage("Test case Details", "Adding the insurance for the car:" + car + " model:+" + model);
+        ReportUtil.logMessage("Test case Details", "Adding the insurance for the car:" + car + " model:" + model);
 
         ReportUtil.addScreenShot(LogStatus.INFO, "Default selection");
         System.out.println(car);
