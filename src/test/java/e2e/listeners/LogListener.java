@@ -45,7 +45,7 @@ public class LogListener implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		LoggerUtil.log(getTestName(result) + " : Test Passed");
+		LoggerUtil.log(getTestName(result) + " : Test Execution Successful");
 	}
 
 	@Override

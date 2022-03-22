@@ -16,7 +16,7 @@ import e2e.util.ReportUtil;
  * component's <code>addReportListener<code> method. When the report event
  * occurs, that object's appropriate method is invoked.
  *
- * @see ReportEvent
+ * @see ReportEvent **
  */
 public class ReportListener implements ITestListener {
 
