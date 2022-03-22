@@ -40,6 +40,8 @@ jobs:
             mkdir -p ~/testng/results/
             find . -type f -regex "./target/surefire-reports/emailable-report.html" -exec cp {} ~/testng/results/ \;
             find . -type f -regex "./ExtentReports/AutomationResult.html" -exec cp {} ~/testng/results/ \;
+            find . -type f -regex "./logfile.log" -exec cp {} ~/testng/results/ \;
+            
           when: always
       - store_test_results:
           path: ~/testng/results/
