@@ -95,7 +95,7 @@ public class MailUtil {
 	 * @return the mail body
 	 */
 	private static String getMailBody(int total, int passed, int failed, int skipped) {
-		return "<!DOCTYPE html>\r\n" + "<html>\r\n" + "<body>\r\n" + "<h1>Automation Execution report...</h1>\r\n"
+		return "<!DOCTYPE html>\r\n" + "<html>\r\n" + "<body>\r\n" + "<h1>Friday Automation Execution report...</h1>\r\n"
 				+ "<table border=\"1\" style=\"width:100%;text-align:center;\">\r\n" + "  <tr>\r\n"
 				+ "    <th style=\"color:blue\">Total</th>\r\n" + "    <th style=\"color:green\">Passed</th>\r\n"
 				+ "    <th style=\"color:red\">Failed</th>\r\n" + "    <th style=\"color:yellow\">Skipped</th>\r\n"

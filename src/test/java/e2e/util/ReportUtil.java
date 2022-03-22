@@ -20,6 +20,7 @@ public class ReportUtil {
 	 * @param message the message
 	 */
 	public static void addScreenShot(String message) {
+
 		String base64Image = "data:image/png;base64,"
 				+ ((TakesScreenshot) WebDriverContext.getDriver()).getScreenshotAs(OutputType.BASE64);
 		ExtentReportManager.getCurrentTest().log(LogStatus.INFO, message,
