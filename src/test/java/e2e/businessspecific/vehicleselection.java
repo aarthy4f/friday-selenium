@@ -67,7 +67,7 @@ public class vehicleselection {
      * @param type
      */
     public void selectmodel(String car,String brand,String type){
-        ReportUtil.logMessage("Find by make and model combination","car Details:"+car+" brand"+brand);
+        ReportUtil.logMessage("Find by make and model combination","car Details:"+car+" brand:"+brand);
 
         VehicleSelectPage vehicleSelectPage=new VehicleSelectPage(driver);
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
