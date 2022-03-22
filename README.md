@@ -4,8 +4,6 @@ friday-selenium Framework
 ---
  The friday-selenium framework based on Page Object Model, Selenium, TestNG using Java.
 
-This framework is based in **Page Object Model (POM).**
-
 The framework uses:
 
 1. Java
