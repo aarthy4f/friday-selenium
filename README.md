@@ -11,6 +11,7 @@ The framework uses:
 3. TestNG
 4. ExtentReport
 5. Log4j
+6. circleCI Integration
 
 **Execution**
 •	Clone the repository.
@@ -23,7 +24,7 @@ Firefox	-Dbrowser=firefox
 Edge	- Dbrowser=edge
 
 
-Architecture Diagram:
+**Architecture Diagram:**
 ![image](https://user-images.githubusercontent.com/56670845/159425660-b14028dc-a06f-4814-80b8-ff51e83398f0.png)
 
 
@@ -33,7 +34,7 @@ Architecture Diagram:
 
 Reporting
 ---
-The framework gives report in three ways,
+The framework gives report in two ways,
 
 1. Log - In file `logfile.log`.
 2. A html report - Which is generated using extent reports, under the folder `ExtentReports`.
