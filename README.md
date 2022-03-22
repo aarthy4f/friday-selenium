@@ -1,8 +1,8 @@
-selenium-testng-framework
+friday-selenium Framework
 ---
 
 ---
-A sample framework based on Page Object Model, Selenium, TestNG using Java.
+ The friday-selenium framework based on Page Object Model, Selenium, TestNG using Java.
 
 This framework is based in **Page Object Model (POM).**
 
@@ -14,8 +14,20 @@ The framework uses:
 4. ExtentReport
 5. Log4j
 
+**Execution**
+•	Clone the repository.
+•	Open command prompt and go to project directory.
+•	Run mvn clean install -Dbrowser=chrome
+•	By default tests are run using Google Chrome.
+Browser	Example
+Chrome	-Dbrowser=chrome
+Firefox	-Dbrowser=firefox
+Edge	- Dbrowser=edge
+
+
 Architecture Diagram:
-![image](https://user-images.githubusercontent.com/56670845/159148023-b4d1970e-92db-47ec-8d87-818fcbb01746.png)
+![image](https://user-images.githubusercontent.com/56670845/159425660-b14028dc-a06f-4814-80b8-ff51e83398f0.png)
+
 
 
 
@@ -27,7 +39,13 @@ The framework gives report in three ways,
 
 1. Log - In file `logfile.log`.
 2. A html report - Which is generated using extent reports, under the folder `ExtentReports`.
-3. A mail report - For which the toggle `mail.sendmail` in `test.properties` should be set `true`. And all the properties such as `smtp host, port, proxy details, etc.,` should be provided correctly.
+
+**Screenshot**
+![image](https://user-images.githubusercontent.com/56670845/159425834-d9f68733-2c61-4497-82ae-7798f558138b.png)
+
+Execution steps
+![image](https://user-images.githubusercontent.com/56670845/159425868-aa583803-55be-4091-bc2f-a4aea1555a32.png)
+
 
 ---
 
